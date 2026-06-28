@@ -2,7 +2,7 @@ services:
   - type: web
     name: lending-app
     runtime: docker
-    repo: https://github.com/YOUR_GITHUB_USERNAME/lending-app.git
+    repo: https://github.com/muchirigikunju22/lending-app.git
     plan: free
     branch: main
     envVars:

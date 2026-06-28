@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: lending-app
+    runtime: docker
+    repo: https://github.com/YOUR_GITHUB_USERNAME/lending-app.git
+    plan: free
+    branch: main
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: lending-db
+          property: connectionString
+      - key: SPRING_JPA_HIBERNATE_DDL_AUTO
+        value: validate
+      - key: SPRING_FLYWAY_ENABLED
+        value: "true"
+
+databases:
+  - name: lending-db
+    databaseName: lendingdb
+    user: lendinguser
+    plan: free

@@ -35,16 +35,9 @@ com.lending.app/
 - Maven 3.9+
 - Docker & Docker Compose (for PostgreSQL)
 
-### Option 1: Docker Compose (Recommended)
 
-```bash
-# Start PostgreSQL and the application
-docker-compose up --build
-```
 
-The application will be available at `http://localhost:8080`.
-
-### Option 2: Local Development
+### Local Environment
 
 ```bash
 # 1. Start PostgreSQL
@@ -70,7 +63,6 @@ The application is pre-loaded with seed data, so you can exercise the API immedi
 - **Products**: 1–3
 - **Loans**: 1–8
 
-> **Currency:** All monetary amounts in the API are denominated in **Kenya Shillings (KSH)**.
 
 ## API Endpoints
 
@@ -218,7 +210,7 @@ Key settings in `application.yml`:
 lending-app/
 ├── docker-compose.yml          # PostgreSQL + App setup
 ├── Dockerfile                  # Application container
-├── pom.xml                     # Maven configuration
+├── pom.xml                    
 ├── README.md                  
 └── src/
     ├── main/
@@ -237,17 +229,14 @@ lending-app/
 
 ## Deployment
 
-### Render (Recommended)
+### Render 
 
 A `render.yaml` Blueprint is included for one-click deployment.
 
-1. Push this repo to GitHub.
-2. Update `render.yaml` and replace `YOUR_GITHUB_USERNAME` with your GitHub username.
-3. Sign in to [Render](https://render.com) and click **New + → Blueprint**.
-4. Connect your GitHub repo and deploy.
-5. Render will create a free PostgreSQL database and build the Docker image.
-6. Once deployed, the Swagger UI will be available at:
-   `https://lending-app.onrender.com/swagger-ui.html`
+1. Sign in to [Render](https://render.com) and click **New + → Blueprint**.
+2. Connect your GitHub repo and deploy.
+3. Render will create a free PostgreSQL database and build the Docker image.
+
 
 The app reads the `DATABASE_URL` environment variable provided by Render and converts it to Spring Boot datasource properties automatically.
 

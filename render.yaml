@@ -6,10 +6,26 @@ services:
     plan: free
     branch: main
     envVars:
-      - key: DATABASE_URL
+      - key: DB_HOST
         fromDatabase:
           name: lending-db
-          property: jdbcConnectionString
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: lending-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: lending-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: lending-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: lending-db
+          property: password
       - key: SPRING_JPA_HIBERNATE_DDL_AUTO
         value: validate
       - key: SPRING_FLYWAY_ENABLED

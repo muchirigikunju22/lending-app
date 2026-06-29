@@ -168,7 +168,21 @@ Admin routes (`/api/v1/admin/**`) would be protected via role-based access contr
 
 All monetary operations would additionally require audit logging tied to the authenticated principal.
 
+## Error Handling
 
+All errors follow the [RFC 7807 Problem Details](https://datatracker.ietf.org/doc/html/rfc7807) standard. Example response:
+
+```json
+{
+  "type": "https://lending.app/errors/not-found",
+  "title": "Resource Not Found",
+  "status": 404,
+  "detail": "Loan with ID 5 not found",
+  "timestamp": "2026-06-28T20:00:00Z"
+}
+```
+
+Common status codes: `400` (validation), `404` (not found), `409` (conflict), `422` (business rule violation), `500` (internal error).
 ## Testing
 
 ```bash
@@ -242,6 +256,9 @@ lending-app/
 ```
 
 ## Deployment
+> **Note:** The live demo is hosted on Render's free tier. 
+> The first request after inactivity may take 2–3 minutes to wake up. 
+> Please wait for Swagger UI to load fully before testing.
 
 ### Render 
 

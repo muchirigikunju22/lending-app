@@ -271,6 +271,24 @@ A `render.yaml` Blueprint is included for one-click deployment.
 
 The app reads the `DATABASE_URL` environment variable provided by Render and converts it to Spring Boot datasource properties automatically.
 
+### Production Deployment Considerations
+
+The current deployment uses Render's free tier for demonstration purposes. 
+For a production-grade lending system, the following platforms and practices 
+would be recommended:
+
+- **Red Hat OpenShift** — Enterprise Kubernetes platform with built-in security, 
+  CI/CD pipelines, and support for regulated financial workloads
+- **AWS EKS / Google GKE** — Managed Kubernetes for scalable container orchestration
+- **Azure AKS** — Particularly suitable for organizations already in the Microsoft ecosystem
+
+Production deployments would also include:
+- Horizontal pod autoscaling based on loan request volume
+- Multi-region database replication for high availability
+- A dedicated API Gateway (e.g. Kong, AWS API Gateway) for rate limiting and auth
+- Centralized logging and monitoring (e.g. ELK Stack, Prometheus + Grafana)
+- Blue/green or canary deployment strategies for zero-downtime releases
+
 ### Manual Docker
 
 ```bash

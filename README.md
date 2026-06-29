@@ -154,6 +154,20 @@ The application is pre-loaded with seed data, so you can exercise the API immedi
 ### Idempotency
 - Loan creation supports `Idempotency-Key` header
 - Prevents duplicate loan disbursements
+## Security
+
+Authentication and Authorization are intentionally out of scope for this case study submission.
+
+In a production system, this would be implemented using **Spring Security with JWT**, with the following structure:
+
+- `ROLE_ADMIN` → full access to all endpoints
+- `ROLE_LOAN_OFFICER` → loan disbursement and management
+- `ROLE_VIEWER` → read-only access
+
+Admin routes (`/api/v1/admin/**`) would be protected via role-based access control (RBAC), while customer-facing operations would require token-based authentication.
+
+All monetary operations would additionally require audit logging tied to the authenticated principal.
+
 
 ## Testing
 
